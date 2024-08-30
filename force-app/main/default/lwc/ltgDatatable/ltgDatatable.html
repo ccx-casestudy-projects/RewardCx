@@ -1,0 +1,50 @@
+<template>
+    
+        
+
+        <template if:true={isOpenFilterInput}>
+            <div style="height: 40px;" class="slds-grid slds-wrap">
+                <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+                    aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                    <div class="slds-modal__container">
+                        <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+                            title="Close" onclick={closeModal}>
+                            <lightning-icon icon-name="utility:close" alternative-text="close" variant="warning"
+                                size="small"></lightning-icon>
+                            <span class="slds-assistive-text">Close</span>
+                        </button>
+
+                        <div class="slds-modal__content slds-p-around_medium slds-grid slds-wrap"
+                            id="modal-content-id-1">
+                            <lightning-input label={inputLabel} onchange={handleChange} oncommit={handleCommit}>
+                            </lightning-input>
+                        </div>
+                    </div>
+                </section>
+                <div class="slds-backdrop slds-backdrop_open"></div>
+            </div>
+        </template>
+
+        <div if:true={dataLoading}
+            class="slds-grid slds-wrap slds-align_absolute-center slds-spinner_inline spinner-padding slds-grid slds-wrap"
+            style="padding-top :10rem; height:23rem;width:86.2rem; ">
+            <lightning-spinner variant="brand" alternative-text="Loading Data" size="medium">
+            </lightning-spinner>
+        </div>
+       
+        <div if:false={dataLoading}>
+            <div class="slds-grid slds-wrap slds-scrollable slds-grid slds-wrap" style="height:23rem;width:100%; "
+                tabindex="0" if:false={dataLoading}>
+                <div class="myTable1">
+                    <lightning-datatable data={data} columns={columns} data-id="datatable" key-field="Id"
+                        onrowaction={handleRowAction} onrowselection={getSelectedName} selected-rows={selectedRowsMap}
+                        resize-column-disabled hide-checkbox-column={ischecked} sorted-by={sortBy}
+                        sorted-direction={sortDirection} onsort={handleSortAccountData} is-loading={dataLoading}
+                        onheaderaction={handleHeaderAction} class="slds-grid slds-wrap">
+
+                    </lightning-datatable>
+                </div>
+            </div>
+        </div>
+  
+</template>

@@ -1,0 +1,23 @@
+.background{
+	background-image: linear-gradient(#faf9f7, #fad7d7);
+}
+.layout{
+	padding: 1rem;
+}
+.layout-item{
+	font-weight: bolder;
+	font-size: 15px;
+}
+.slds-box{
+  border-width: 2px;
+  border-color: black;
+  width: 30rem;
+}
+.AutoCustomer{
+    margin: 1rem;
+    width: 75px;
+    margin-top: 0;
+}
+.gridclass{
+	padding-bottom: 10px;
+}

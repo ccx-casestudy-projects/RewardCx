@@ -1,0 +1,13 @@
+/*CSS File*/
+.slds-text-heading_medium{
+    margin-top: 10px;
+    font-weight: bolder;
+    color:#52504f;
+}
+.background{
+    height: 27rem;
+    
+}
+.tabset{
+    	background-image: linear-gradient(#faf9f7, #fad7d7);
+}

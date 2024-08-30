@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>61.0</apiVersion>
+    <assignments>
+        <name>Assign_Store_Name</name>
+        <label>Assign Store Name</label>
+        <locationX>50</locationX>
+        <locationY>395</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Name</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>$Record.Store__r.Name</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Check_If_there_old_records_for_user</targetReference>
+        </connector>
+    </assignments>
+    <customErrors>
+        <name>Already_user_assigned_with_station</name>
+        <label>Already user assigned with station</label>
+        <locationX>50</locationX>
+        <locationY>803</locationY>
+        <customErrorMessages>
+            <errorMessage>Already user assigned with station.</errorMessage>
+            <fieldSelection>User__c</fieldSelection>
+            <isFieldError>true</isFieldError>
+        </customErrorMessages>
+    </customErrors>
+    <decisions>
+        <name>Check_If_Station_Name_Exists</name>
+        <label>Check If Station Name Exists</label>
+        <locationX>182</locationX>
+        <locationY>287</locationY>
+        <defaultConnector>
+            <targetReference>Check_If_there_old_records_for_user</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Station_Name_Not_Exists</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Name</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_Store_Name</targetReference>
+            </connector>
+            <label>Station Name Not Exists</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>User_Has_Assigned_with_store</name>
+        <label>User Has Assigned with store?</label>
+        <locationX>182</locationX>
+        <locationY>695</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>User_not_Assigned_with_store</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Check_If_there_old_records_for_user</leftValueReference>
+                <operator>IsEmpty</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Already_user_assigned_with_station</targetReference>
+            </connector>
+            <label>User not Assigned with store</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <interviewLabel>Already user assigned with station {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Already user assigned with station</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Check_If_there_old_records_for_user</name>
+        <label>Check If there old records for user</label>
+        <locationX>182</locationX>
+        <locationY>587</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>User_Has_Assigned_with_store</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>User__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.User__r.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>Assign_Store__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <start>
+        <locationX>56</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Check_If_Station_Name_Exists</targetReference>
+        </connector>
+        <object>Assign_Store__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

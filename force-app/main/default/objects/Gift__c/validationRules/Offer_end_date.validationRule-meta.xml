@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Offer_end_date</fullName>
+    <active>true</active>
+    <errorConditionFormula>Offer_End_Date__c  &lt;  Offer_Start_Date__c</errorConditionFormula>
+    <errorDisplayField>Offer_End_Date__c</errorDisplayField>
+    <errorMessage>Offer End Date should not be less than Offer Start Date</errorMessage>
+</ValidationRule>

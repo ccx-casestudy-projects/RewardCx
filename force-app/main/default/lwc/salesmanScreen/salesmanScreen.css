@@ -1,0 +1,76 @@
+.backgroundImg{
+ 	background-image: linear-gradient(#faf9f7, #fad7d7);
+   height: 30rem;
+  
+}
+.boxclass{
+ margin: 3rem;
+  width: 30%;
+  margin-left: 28rem;
+}
+.card {
+  background-color: #fad0b1;
+}
+.custData{
+	margin: 2rem 2rem 2rem 0;
+}
+.slds-box{
+   border: 2px;
+  border-radius: 20%;
+  border-color: black;
+}
+
+.empText{
+  width:12rem;
+}
+.radioGroup{
+	text-align: start;
+	display: grid;
+  justify-content: start;
+	font-weight: bold;
+  padding-left: 32rem;
+  padding-bottom: 3rem;
+}
+.inputrow{
+  font-weight: bold;
+  padding: 2px;
+}
+.data{
+  padding-left: 2rem;
+}
+
+.field-pair {
+    display: flex;
+    align-items: start;
+    margin-bottom: 10px;
+}
+
+.field-pair label {
+    flex-basis: 50%;
+    text-align: right;
+    padding-right: 10px;
+	font-weight: bolder;
+}
+
+.field-pair lightning-output-field {
+    flex-basis: 50%;
+}
+
+.radio-group.slds-form-element__control .slds-radio
+{
+    display: inline-block !important;
+}
+@media (max-width: 800px) {
+  .field-pair label{
+    text-align: left;
+	margin-left: 2rem;
+  }
+  .radioGroup{
+	text-align: start;
+	display: grid;
+  justify-content: start;
+	font-weight: bold;
+  padding-left: 2rem;
+  padding-bottom: 3rem;
+}
+}

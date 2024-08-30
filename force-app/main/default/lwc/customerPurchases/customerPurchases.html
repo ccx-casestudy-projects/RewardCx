@@ -1,0 +1,149 @@
+<template>
+		<lightning-card>
+	<template if:true={isModalOpen}>
+		<!-- Modal/Popup Box LWC starts here -->
+		<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+			aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+			<div class="slds-modal__container">
+				<!-- Modal/Popup Box LWC header here -->
+				<header class="slds-modal__header">
+					<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+                        title="Close" onclick={handleBack}>
+                        <lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse"
+                            size="small"></lightning-icon>
+                        <span class="slds-assistive-text">Close</span>
+                    </button>
+					<div class="slds-grid slds-gutters">
+						<div class="slds-align_absolute-center">
+							<h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate"
+								style="font-size:x-large; font-weight:bold;   margin-left:-20px;">
+								SEARCH CUSTOMER</h2>
+						</div>
+					</div>
+				</header>
+				<div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1" style="height:10rem;">
+					<!-- <lightning-card>
+						<label style="font-weight: bolder;">Search Customer</label>
+						<lightning-input type="tel" value={searchKey} onchange={handleKeyChange}
+							placeholder="Search Phone..."></lightning-input>
+						<br />
+						<lightning-button class="slds-align_absolute-center" label="Search" variant="brand"
+							onclick={handlesearch}></lightning-button>
+					</lightning-card> -->
+					<template if:true={recordsList}>
+					  <c-customsearchlookup lookup-label="SEARCH CUSTOMER"  icon-name="standard:account" records-lst={recordsList}  
+                                      onrecordselection={handlesearch}></c-customsearchlookup> 
+					</template>
+				</div>
+			</div>
+		</section>
+		<div class="slds-backdrop slds-backdrop_open"></div>
+	</template>
+	<!--END SHOW MODAL POPUP-->
+	<!-- <c-premier_-gas_-lpg_-header></c-premier_-gas_-lpg_-header> -->
+	<template if:true={isUpdateBox}>
+		<div class="backgroundImg">
+			<div class=" cardStyle">
+				<template if:true={custData}>
+					<div class="slds-grid gridclass"> 
+						<div class="slds-col slds-p-left_x-small">
+							<lightning-icon icon-name="standard:output" size="medium" onclick={handleBack} title="Back"
+								style="-webkit-transform: scaleX(-1); transform: scaleX(-1);"></lightning-icon>
+						</div>
+						<div class="slds-col slds-grid space">
+							<div class="slds-size_1-of-3">
+								<div class="slds-box">
+									<div class="slds-grid">
+										<div class="slds-col slds-size_1-of-3  AutoCustomer">
+											<img src="https://img.freepik.com/premium-vector/limousine-driver-avatar_106788-330.jpg?w=2000"
+											alt="Avatar" class="customer">
+										</div>
+										<div class="slds-col slds-size_2-of-3  lables">
+											<table class="layout">
+												<tr valign="top">
+													<td>
+														<div class="layout-item">
+															<label>Name:</label>
+														</div>
+													</td>
+													<td>
+														<div if:true={custData.RWD_CX__Name__c}  style="padding-left:10px;">
+															{custData.RWD_CX__Name__c}
+														</div>
+													</td>
+												</tr>
+												<tr valign="top">
+													<td>
+														<div  class="layout-item">
+															<label>Phone:</label>
+														</div>
+													</td>
+													<td>
+														<div if:true={custData.RWD_CX__Phone__c}  style="padding-left:10px;">
+															{custData.RWD_CX__Phone__c}
+														</div>
+													</td>
+												</tr>
+												<tr valign="top">
+													<td>
+														<div  class="layout-item">
+															<label>Total Gained Points:</label>
+														</div>
+													</td>
+													<td>
+														<div if:true={custData.RWD_CX__Total_Loyality_Points__c}  style="padding-left:10px;">
+															{custData.RWD_CX__Total_Loyality_Points__c}
+														</div>
+													</td>
+												</tr>
+												<tr valign="top">
+													<td>
+														<div  class="layout-item">
+															<label>Claims:</label>
+														</div>
+													</td>
+													<td>
+														<div if:true={claimRecordCount}  style="padding-left:10px;">
+															{claimRecordCount}
+														</div>
+													</td>
+												</tr>
+											</table>
+										</div>
+
+										<!-- <div class="slds-col">
+											<p><b>Name :</b></p>
+											<p><b>Phone :</b></p>
+											<p><b>Vehicle Number :</b></p>
+											<p><b>Total Gained Points :</b></p>
+											<p><b>Claims:</b></p>
+										</div> -->
+										<!-- <div class="slds-col slds-text-align_right">
+												{custData.Name__c}<br />
+												{custData.Phone__c}<br />
+												{custData.Vehicle_Number__c}<br />
+												{custData.Total_Loyality_Points__c}
+												{count}
+										</div> -->
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</template>
+				<template if:false={custData}>
+					<p class="slds-form-element__label slds-text-title_bold">No data found for this Vehicle Number.</p>
+				</template>
+			</div>
+		</div>
+	</template>
+	
+<template if:true={customerID}>
+	<c-ltg-datatable
+	objectapiname={objectapiname} columns={columns} cid={customerID} fields={fields} empid={empid} empname={empname} empstation={empstation}>
+
+	</c-ltg-datatable>
+</template>
+	<!-- <c-premier_-lpg_-footer></c-premier_-lpg_-footer> -->
+		</lightning-card>
+</template>

@@ -1,0 +1,137 @@
+.size{
+  width: 25%;
+}
+.slds-theme_alert-texture{
+  background-image: #0059a5;
+}
+.slds-theme_success{
+   background-color: #0059a5 !important;
+
+}
+/* Media query for mobile devices */
+@media (max-width: 767px) {
+  .size{
+      width: 50%; /* Adjust the width for mobile devices as needed */
+  }
+  .space{
+    font-size: 8px;
+  }
+  .lables{
+    width: 170px;
+  }
+  .slds-text-align_right{
+  font-weight: bold;
+  width: 170px;
+}
+  .starStyle{
+  margin: 0px;
+  font-size: 65px;
+  display: inline-block;
+  animation: blinker 1s linear infinite;
+  position: relative;
+}
+.AutoCustomer{/*Image*/
+  width: 100px;
+  margin-top: 0;
+}
+
+}
+.text{
+  text-transform: uppercase;
+}
+.container-top {
+    display: flex;
+    align-items: flex-end;
+    width: 60px;
+  }
+  
+  .top {
+    position: sticky;
+    bottom: 20px;      
+    margin-right: 10px; 
+  }
+  .slds-align_absolute-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.slds-text-align_right{
+  font-weight: bold;
+  width: 200px;
+}
+.backgroundImg{
+  background-image: linear-gradient( rgb(255, 230, 7),green);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  
+}
+.card-with-opacity {
+  opacity: 0.7; /* Set the desired opacity level (0.0 to 1.0) */
+}
+.transparent{
+  opacity: 0.8;
+  transition: transform 3s; /* Add a smooth transition effect */
+}
+.transparent:hover{
+  transform: scale(2); /* Increase the scale on hover (e.g., 110% of the original size) */
+  opacity: 1;
+}
+.starStyle{
+  margin-top: 15px;
+  font-size: 85px;
+  display: inline-block;
+  animation: blinker 1s linear infinite;
+  position: relative;
+}
+.star-content {
+        font-size: 10px;
+        color: white;
+        font-weight: bolder;
+        position: absolute;
+        top: 54%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
+.cardStyle{
+  //height: 435px;
+  overflow-y: auto;
+  background-image: linear-gradient(#faf9f7, #fad7d7);
+}
+.tophead{
+  margin-top: 1.6rem;
+}/*back icon a& customer Data alignment*/
+.giftImg{
+  width: 100%;
+}
+.giftDetail{
+  font-size: 12px;
+}
+.customer{
+  border-radius: 50%;
+
+}
+.slds-box{
+  border-width: 2px;
+  border-color: black;
+  width: 30rem;
+}
+.AutoCustomer{
+    margin: 1rem;
+    width: 75px;
+    margin-top: 0;
+}
+.layout{
+	padding: 1rem;
+}
+.layout-item{
+	font-weight: bolder;
+	font-size: 15px;
+}

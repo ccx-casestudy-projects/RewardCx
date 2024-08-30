@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlexiPage xmlns="http://soap.sforce.com/2006/04/metadata">
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>actionType</name>
+                    <value>Scan a URL</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>apexClassName</name>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>buttonLabel</name>
+                    <value>Scan Barcode</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>cardTitle</name>
+                    <value>Barcode Scanner</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>debug</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>flowApiName</name>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>hideComponentIfNoScanner</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>instructions</name>
+                    <value>Press the button below to open the camera. Position a barcode in the scanner window to scan it.</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>instructionsColor</name>
+                    <value>#888888</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>successMessage</name>
+                    <value>Success!</value>
+                </componentInstanceProperties>
+                <componentName>barcodeScanner</componentName>
+                <identifier>c_barcodeScanner</identifier>
+                <visibilityRule>
+                    <criteria>
+                        <leftValue>{!$User.Profile.Name}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Sales User Profile</rightValue>
+                    </criteria>
+                </visibilityRule>
+            </componentInstance>
+        </itemInstances>
+        <name>main</name>
+        <type>Region</type>
+    </flexiPageRegions>
+    <masterLabel>Sales Home</masterLabel>
+    <template>
+        <name>flexipage:defaultAppHomeTemplate</name>
+    </template>
+    <type>AppPage</type>
+</FlexiPage>

@@ -1,0 +1,107 @@
+<template>
+
+    <template if:true={isModalOpen}>
+        <!-- Modal/Popup Box LWC starts here -->
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+            aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <!-- Modal/Popup Box LWC header here -->
+                <header class="slds-modal__header">
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+                        title="Close" onclick={closeModal}>
+                        <lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse"
+                            size="small"></lightning-icon>
+                        <span class="slds-assistive-text">Close</span>
+                    </button>
+                    <div class="slds-grid slds-gutters">
+                        <div class="slds-align_absolute-center">
+                            <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate"
+                                style="font-size:x-large; font-weight:bold;   margin-left:-20px;">
+                                SEARCH CUSTOMER</h2>
+                        </div>
+                    </div>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                    <lightning-card>
+                       
+                            <label style="font-weight: bolder;">Search Phone Number</label>
+                                <!-- <c-search-customer-component lookup-label="Search Phone Number"
+                                    object-api-name="Customer__c" icon-name="standard:contact"
+                                    onrecordselection={onAccountSelection}></c-search-customer-component> -->
+                                    <lightning-input type="text" value={searchKey} onkeyup={handleKeyChange} 
+                                    onchange={handleKeyChange} 
+                                    placeholder="Search Phone Number..." style="margin-top: -1rem;"></lightning-input>
+                          
+                       
+                        <br />
+                        <lightning-button class="slds-align_absolute-center" label="Search" variant="brand"
+                            onclick={handlesearch}></lightning-button>
+                    </lightning-card>
+                </div>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+    <template if:true={isUpdateBox}>
+        <template if:true={custData}>
+            <div class="slds-grid slds-align_absolute-center backcolor">
+                <!-- <div class="slds-col slds-size_1-of-4">
+                    <div class="image-container">
+                        <img alt="PREMIER LPG LIMITED" src={imageUrl1} width="100" height="100" />
+                    </div>
+                </div> -->
+                <div class="slds-col slds-size_3-of-4 slds-text-align_center">
+                    
+                    <h1 class=" blink"><b>REWARDCX</b></h1>
+                </div>
+            </div>
+            <header style="text-align: center; font-weight:bolder; font-size:large;">
+                <p>Hello {custData.RWD_CX__Name__c}   <lightning-icon
+                    icon-name="action:user"
+                    size="x-small"
+                >
+                </lightning-icon></p>
+                <p>Welcome to REWARDCX</p>
+            </header>
+            <lightning-card class="card-Class">
+                <div style="padding-left: 10px;">
+                    <p><b>Name :</b> {custData.RWD_CX__Name__c}</p>
+                    <p><b>Adhar Number :</b> {custData.RWD_CX__Aadhaar_Number__c}</p>
+                    <p><b>Phone :</b> {custData.RWD_CX__Phone__c}</p>
+                    <p><b>Total Loyality Points :</b> {custData.RWD_CX__Total_Loyality_Points__c}</p>
+                    <p><b>Modified Date :</b> {formattedLastModifiedDate}</p>
+                </div>
+            </lightning-card>
+            <template if:true={gifts}>
+                <div class="slds-grid slds-wrap card-Class">
+                    <template for:each={gifts} for:item="gift">
+                        <div key={gift.Id} class="slds-col
+                                        slds-size_1-of-1 slds-p-around_medium">
+                            <lightning-card class="card-style">
+                                <h1 slot="title" class="slds-form-element__label slds-text-title_bold">
+                                    {gift.RWD_CX__Gift_Name__c}</h1>
+
+                                <div class="slds-align_absolute-center">
+
+                                    <img src={gift.RWD_CX__Gift_Image_Link__c} alt=" Gift Image" height="60px" width="100px" />
+
+                                </div>
+                                <p slot="footer" class="slds-form-element__label slds-text-title_bold points">
+                                    Required Points :
+                                    {gift.RWD_CX__Points__c} </p>
+                            </lightning-card>
+                        </div>
+                    </template>
+                </div>
+            </template>
+            <template if:false={gifts}>
+                <p class="slds-form-element__label slds-text-title_bold">No gifts found for this account.</p>
+            </template>
+        </template>
+        <template if:false={custData}>
+            <p class="slds-form-element__label slds-text-title_bold">No data found for this account.</p>
+        </template>
+    
+    </template>
+   
+</template>

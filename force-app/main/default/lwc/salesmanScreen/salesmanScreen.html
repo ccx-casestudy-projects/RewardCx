@@ -1,0 +1,92 @@
+<template>
+	<!-- <c-premier_-gas_-lpg_-header></c-premier_-gas_-lpg_-header> -->
+	<div class="backgroundImg">
+		<div class="slds-col slds-text-align_center">
+			<h1 style="font-size:x-large; font-weight:bolder;">Customer Details</h1>
+		</div>
+		<div class="boxclass">
+			<lightning-card class="card">
+			<div class=" slds-align_absolute-center">
+				<template if:true={customerid}>
+					<lightning-record-edit-form object-api-name="RWD_CX__Customer__c" record-id={customerid}>
+						<div class="data ">
+							<div class="slds-grid slds-gutters ">
+								<div class="slds-col lableData ">
+									<table>
+										<tr valign="top">
+											<td>
+												<div class="inputrow">
+													<label for="cusname">Customer Name : </label>
+												</div>
+											</td>
+											<td>
+												<div class="">
+													<lightning-output-field fieldid="cusname" variant='label-hidden' field-name="RWD_CX__Name__c"
+													class="slds-text-title_bold"></lightning-output-field>
+												</div>
+											</td>
+										</tr>
+										<tr valign="top">
+											<td>
+												<div class="inputrow">
+													<label for="cusname">Phone Number  : </label>
+												</div>
+											</td>
+											<td>
+												<div class="">
+													<lightning-output-field fieldid="cusphone" variant='label-hidden'
+													field-name="RWD_CX__Phone__c"></lightning-output-field>
+												</div>
+											</td>
+										</tr>
+										<tr valign="top">
+											<td>
+												<div class="inputrow">
+													<label for="cusname">Aadhar Number : </label>
+												</div>
+											</td>
+											<td>
+												<div class="">
+													<lightning-output-field fieldid="cusaadhar" variant='label-hidden'
+													field-name="RWD_CX__Aadhaar_Number__c"></lightning-output-field>
+												</div>
+											</td>
+										</tr>
+										
+										<tr valign="top">
+											<td>
+												<div class="inputrow">
+													<label for="cusname">Total Points Gained : </label>
+												</div>
+											</td>
+											<td>
+												<div class="">
+													<lightning-output-field fieldid="cuspoints" variant='label-hidden'
+													field-name="RWD_CX__Total_Loyality_Points__c"></lightning-output-field>
+												</div>
+											</td>
+										</tr>
+									</table>
+								</div>
+							</div>
+						</div>
+					</lightning-record-edit-form>
+				</template>
+			</div>
+			<div class="">
+					<lightning-input label="Amount" type="number" placeholder="Enter Amount..." required value={inputValue} onchange={handleInputChange}
+						size="medium" class="empText slds-align_absolute-center"></lightning-input>
+					<lightning-input label="Bill Number"  placeholder="Enter Bill Number..." value={inputBillValue} onchange={handleBillInputChange}
+						size="medium"  class="empText slds-align_absolute-center"></lightning-input>
+					<div class="slds-p-top_medium slds-align_absolute-center">
+						<lightning-button variant="brand-outline" label="Cancel" onclick={handleCancel} ></lightning-button>
+						<lightning-button variant="brand" label="Submit" onclick={handleClick} class="slds-p-left_medium"></lightning-button>
+					</div>
+
+			</div>
+		</lightning-card>
+		</div>
+		
+	</div>
+	<!-- <c-premier_-lpg_-footer></c-premier_-lpg_-footer> -->
+</template>

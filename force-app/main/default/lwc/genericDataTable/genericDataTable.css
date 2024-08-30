@@ -1,0 +1,28 @@
+.buttonSize {
+
+    --slds-c-button-sizing-border: 1px;
+
+    --slds-c-button-spacing-block-start: 3px;
+
+    --slds-c-button-spacing-block-end: 3px;
+
+    --slds-c-button-neutral-spacing-inline-end: 5px;
+
+    --slds-c-button-neutral-spacing-inline-start: 5px;
+
+}
+
+.myButtonClass
+ {
+     margin-right: 10px;
+     
+ }
+ .backgroungImg{
+  background-image: linear-gradient( rgb(255, 230, 7),green);
+    display: flex; /* Add this line */
+    justify-content: center; /* Add this line */
+    align-items: center; /* Add this line */
+}
+.slds-icon-action-back {
+    background-color: rgb(1, 118, 211);
+}

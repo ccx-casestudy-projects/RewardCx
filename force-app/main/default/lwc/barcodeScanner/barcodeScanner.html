@@ -1,0 +1,222 @@
+<template>
+
+	<!-- <c-premier_-gas_-lpg_-header class="header"></c-premier_-gas_-lpg_-header> -->
+	<div class="backgroundImg">
+		<template if:true={showComponent} class="slds-grid">
+			<div class="employeeCard">
+				<lightning-card icon-name="standard:products" title='Customer' class="card">
+					<!-- <lightning-button variant="brand" label="Check Out" slot="actions" onclick={checkOutClick}
+						class="slds-float_right slds-text-title_bold checkout"></lightning-button> -->
+					
+				<!-- <table class="layout">
+					<tr valign="top">
+						<td>
+							<div class="layout-item">
+								<div if:true={userName}>
+									<label>Name:</label>
+								</div>
+							</div>
+						</td>
+						<td>
+							<div if:true={userName} class="layout-item1">
+								{userName}
+							</div>
+						</td>
+					</tr>
+					<tr  valign="top">
+						<td>
+							<div class="layout-item">
+								<div if:true={Logindatetime}>
+									<label>Login Date:</label>
+								</div>
+							</div>
+						</td>
+						<td>
+							<div if:true={Logindatetime} class="layout-item1">
+								{Logindatetime}
+							</div>
+						</td>
+					</tr>
+					<tr  valign="top">
+						<td>
+							<div class="layout-item">
+								<label>Opening Reading:</label>
+							</div>
+						</td>
+						<td>
+							<div if:true={openingreading} class="layout-item1">
+								{openingreading}
+							</div>
+						</td>
+					</tr>
+					<tr  valign="top">
+						<td>
+							<div class="layout-item">
+								<div if:true={Logindatetime}>
+									<label>Liters Sold:</label>
+								</div>
+							</div>
+						</td>
+						<td>
+							<div if:true={Logindatetime} class="layout-item1">
+								{liters}
+							</div>
+						</td>
+					</tr>
+				</table> -->
+
+					<!-- <lightning-layout class="layout">
+						<lightning-layout-item  class="layout-item" >
+							<div if:true={userName}>
+								<label>Name : </label>
+							</div>
+							<div if:true={Logindatetime}>
+								<label>Login Date : </label>
+							</div>
+							<div >
+								<label>Opening Reading : </label>
+							</div>
+							<div if:true={Logindatetime}>
+								<label>Liters Sold : </label>
+							</div>
+						</lightning-layout-item>
+						<lightning-layout-item  class="layout-item1" >
+							<div if:true={userName}>
+								{userName}
+							</div>
+							<div if:true={Logindatetime}>
+								 {Logindatetime}
+							</div>
+							<div if:true={openingreading} >
+								{openingreading}
+							</div>
+							<div if:true={Logindatetime}>
+								{liters}
+							</div>
+						</lightning-layout-item>
+					</lightning-layout>
+					
+				 -->
+
+			<div class="slds-p-horizontal_medium">
+
+				<div class="slds-align_absolute-center slds-var-p-vertical_x-small slds-text-title_bold">
+					<!-- <lightning-button variant="brand" disabled={scanButtonDisabled} icon-name="utility:photo"
+						label={buttonLabel} title="Open a camera view and look for a barcode to scan"
+						onclick={handleBeginScanClick}>
+					</lightning-button> -->
+						<lightning-radio-group options={options} value={selectedRadioValue} type="radio" onchange={handleRadioChange}>
+				</lightning-radio-group>
+				</div>
+				<template if:true={showDebugWindow}>
+					<p class="slds-var-p-vertical_small slds-text-body_small">Text of the scanned barcode:</p>
+					<lightning-tile class="slds-border slds-tile_board slds-box slds-box_small">
+						<span class="slds-text-font_monospace" style="word-wrap: break-word">{scannedBarcode}</span>
+					</lightning-tile>
+				</template>
+			</div>
+		</lightning-card>
+	</div>
+</template>
+<template if:true={isModalOpen}>
+
+	
+		<!-- Modal/Popup Box LWC starts here -->
+		<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+			aria-describedby="modal-content-id-11" class="slds-modal slds-fade-in-open">
+			<div class="slds-modal__container">
+				<!-- Modal/Popup Box LWC header here -->
+				<header class="slds-modal__header">
+					<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+                        title="Close" onclick={handleBack}>
+                        <lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse"
+                            size="small"></lightning-icon>
+                        <span class="slds-assistive-text">Close</span>
+                    </button>
+					<div class="slds-grid slds-gutters">
+						<div class="slds-align_absolute-center">
+							<h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate"
+								style="font-size:x-large; font-weight:bold;   margin-left:-20px;">
+								SEARCH CUSTOMER</h2>
+						</div>
+					</div>
+				</header>
+				<div class="slds-modal__content slds-p-around_medium" id="modal-content-id-02" style="height:10rem;">
+					<template if:true={recordsList}>
+					  <c-customsearchlookup lookup-label="SEARCH CUSTOMER"  icon-name="standard:account" records-lst={recordsList}  
+                                      onrecordselection={handlesearch}></c-customsearchlookup> 
+					</template>
+					<!-- <lightning-card>
+						<label style="font-weight: bolder;">Search Customer</label>
+						<lightning-input type="tel" value={searchKey} onchange={handleKeyChange}
+							placeholder="Search Phone..."></lightning-input>
+						<br />
+						<lightning-button class="slds-float_right" label="Search" variant="brand"
+							onclick={handlesearch}></lightning-button>
+					</lightning-card> -->
+				</div>
+			</div>
+		</section>
+		<div class="slds-backdrop slds-backdrop_open"></div>
+	
+
+</template>
+<template if:true={solddata}>
+	<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+		aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+		<div class="slds-modal__container">
+			<!-- modal header start -->
+			<header class="slds-modal__header">
+				<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+							title="Close" onclick={hideModalBox}>
+							<lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse"
+								size="small"></lightning-icon>
+							<span class="slds-assistive-text">Close</span>
+                    	</button>
+				<h2 id="modal-heading-012" class="slds-text-heading_large slds-hyphenate slds-text-title_bold">
+					SALES DATA</h2>
+			</header>
+
+			<!-- modal body start -->
+			<div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+				<div class="slds-grid slds-gutters salesData">
+					<div class="slds-col">
+						<div if:true={empname}>
+							<label><b>Name:</b> {empname}</label>
+						</div>
+						<div if:true={Logindatetime}>
+							<label><b>Login Date: </b>{Logindatetime}</label>
+						</div>
+						<div if:true={logouttime}>
+							<label><b>Logout Time :</b> {logouttime}</label>
+						</div>
+					</div>
+					<div class="slds-col">
+						<div if:true={openingreading}>
+							<label><b>Opening Reading: </b>{openingreading}</label>
+						</div>
+						<div if:true={Logindatetime}>
+							<label><b>Liters Sold: </b>{liters}</label>
+						</div>
+						<div if:true={closingreading}>
+							<label><b>Closing Reading:</b> {closingreading}</label>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- modal footer start-->
+			<footer class="slds-modal__footer">
+				<lightning-button onclick={hideModalBox} label="Cancel" class="cancel slds-text-title_bold"
+					variant="destructive"></lightning-button>
+				<lightning-button onclick={ModalBox} label="Save" variant="success" class="slds-text-title_bold">
+				</lightning-button>
+			</footer>
+
+		</div>
+	</section>
+	<div class="slds-backdrop slds-backdrop_open"></div>
+</template>
+</div>
+<!-- <c-premier_-lpg_-footer class="footer"></c-premier_-lpg_-footer> -->
+</template>

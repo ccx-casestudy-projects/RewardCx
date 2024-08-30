@@ -1,0 +1,31 @@
+.backcolor{
+   /* background-color: rgb(10, 65, 10);*/
+   background:  rgb(10, 65, 10);
+    background: linear-gradient(90deg,  rgb(10, 65, 10) 0%, rgba(9,121,20,1) 53%, rgb(51, 211, 2) 100%);
+    border-radius: 20px;
+}
+.image-container {
+    background-color: yellow;
+    display: inline-block;
+    padding: 10px; /* Add padding if needed */
+    border-radius: 10px; /* Add border radius if needed */
+}
+.blink{
+         font-family: 'Noto Sans', sans-serif;
+    font-size: 1.2rem;
+         color: yellow !important;
+        padding: 10px;  
+        text-align: center;
+        /*line-height: 50px;*/
+        animation: blink 2s linear infinite;
+        text-shadow: 3px 3px 2px rgb(191, 0, 0, 1); 
+    }
+
+@keyframes blink{
+0%{opacity: 0;}
+50%{opacity: .5;}
+100%{opacity: 1;}
+}
+.card-Class{
+background-color: rgb(214, 214, 214);
+}

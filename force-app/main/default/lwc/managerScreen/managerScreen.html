@@ -1,0 +1,89 @@
+<template>
+	<lightning-card class="background ">
+		<div class="slds-grid headingstyle ">
+		<div class=" slds-col  slds-text-heading_medium slds-align_absolute-center">
+				<lightning-formatted-rich-text value={Message} class="textcss slds-float_right "></lightning-formatted-rich-text><br/><br/>
+			</div>
+		</div>
+		<div class="slds-grid headingstyle ">
+			
+				<div class=" slds-col  slds-text-heading_medium slds-align_absolute-center">
+				<lightning-formatted-rich-text value={greetingMessage} class="textcss slds-float_right "></lightning-formatted-rich-text>
+			</div>
+			<!-- <div class="slds-col slds-text-heading-medium checkout">
+				<lightning-button variant="brand" label="Check Out" onclick={checkOutClick}
+					class="slds-float_right slds-text-title_bold"></lightning-button>
+			</div> -->
+		</div> 
+		
+		<div class="buttoncss background tabset">
+			<div class="slds-grid  ">
+					<div class="slds-col  slds-size_1-of-6 slds-p-around_xx-small">
+						<lightning-button variant="brand-outline" label="Store Management"
+								class="button1" onclick={stationmanagementClick}>
+						</lightning-button>
+					</div>
+					<div class="slds-col  slds-size_1-of-6 slds-p-around_xx-small">
+						<lightning-button variant="brand-outline" label="Store Assignment"
+							class="button4" onclick={storeAssignmentClick}>
+						</lightning-button>
+					</div>
+					<div class="slds-col  slds-size_1-of-6 slds-p-around_xx-small">
+						<lightning-button variant="brand-outline" label="Employee Management"
+								class="button8" onclick={employeemanagementClick}>
+						</lightning-button>
+					</div>
+					<div class="slds-col  slds-size_1-of-6 slds-p-around_xx-small">
+						<lightning-button variant="brand-outline" label="Customer Management"
+							class="button8" onclick={customermanagementClick}>
+						</lightning-button>
+					</div>
+					<div class="slds-col  slds-size_1-of-6 slds-p-around_xx-small">
+						<lightning-button variant="brand-outline" label="Gifts Management"
+							class="button4" onclick={giftsmanagementClick}>
+						</lightning-button>
+					</div>
+					<div class="slds-col  slds-size_1-of-6 slds-p-around_xx-small">
+						<lightning-button variant="brand-outline" label="Store Gift Management"
+							class="button61"
+							onclick={stationgiftmanagementClick}></lightning-button>
+					</div>
+					
+			</div>
+			<div class="slds-grid ">
+				<div class="slds-col  slds-size_1-of-6 slds-p-around_xx-small">
+						<lightning-button variant="brand-outline" label="Sales Management"
+								class="button3 " onclick={salesmanagementClick}>
+						</lightning-button>
+					</div>
+					<div class="slds-col  slds-size_1-of-6 slds-p-around_xx-small">
+						<lightning-button variant="brand-outline" label="Claims History"
+							class="button1" onclick={claimsmanagementClick}>
+						</lightning-button>
+					</div>
+					
+					<div class="slds-col  slds-size_1-of-6 slds-p-around_xx-small">
+						<lightning-button variant="brand-outline" label="Salesman Data" 
+							class="button31" onclick={SalesData}></lightning-button>
+					</div>
+					
+					<div class="slds-col  slds-size_1-of-6 slds-p-around_xx-small">
+						<lightning-button variant="brand-outline" label="Claim Now" 
+							class="button2" onclick={ClaimsNowClick}></lightning-button>
+					</div>
+					
+					<div class="slds-col  slds-size_1-of-6 slds-p-around_xx-small">
+						<lightning-button variant="brand-outline" label="Customer Claims" 
+							class="button2" onclick={CustomerClaimsClick}></lightning-button>
+					</div>
+					
+					<div class="slds-col  slds-size_1-of-6 slds-p-around_xx-small">
+						<lightning-button variant="brand-outline" label="Update Gift Stock"
+							class="button4" onclick={GiftstockClick}>
+						</lightning-button>
+					</div>
+					
+			</div>
+		</div>
+	</lightning-card>
+</template>

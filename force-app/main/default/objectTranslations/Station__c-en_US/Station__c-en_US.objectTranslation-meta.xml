@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Store</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Stores</value>
+    </caseValues>
+    <layouts>
+        <layout>Station Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Store name is empty --></errorMessage>
+        <name>Name_Is_Empty</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Station Name should be Unique . --></errorMessage>
+        <name>Station_Name</name>
+    </validationRules>
+</CustomObjectTranslation>

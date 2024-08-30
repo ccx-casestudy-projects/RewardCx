@@ -1,0 +1,88 @@
+/*CSS*/
+.backgroundImg{
+	background-image: linear-gradient(#faf9f7, #fad7d7);
+	display: flex; /* Add this line */
+    justify-content: center; /* Add this line */
+    align-items: center; /* Add this line */
+	
+}
+.employeeCard{
+	margin: 5rem;
+	height: 30rem;
+	//width: 60%;
+}
+.layout{
+	padding: 1rem;
+}
+.layout-item{
+	font-weight: bolder;
+	font-size: 15px;
+}
+.layout-item1{
+	font-size: 15px;
+}
+.empData{
+	margin: 1rem 0rem;
+	//display: flex;
+	//justify-content: center;
+}
+.lables{
+	text-align: justify;
+	line-height: 2.3;
+}
+.value{
+	line-height: 2.3;
+}
+.empData1{
+	margin-left: 1rem;
+	text-align: start;
+}
+.empData2{
+	text-align: start;
+
+}
+.salesData{
+	margin-left: 10px;
+}
+.slds-text-heading_large{
+	font-size: large;
+}
+.cancel{
+	margin-right: 10px;
+}
+.card{
+	background-color: #fad0b1;
+}
+@media (max-width: 800px){
+	.backgroundImg{
+    	height: 70%;
+	}
+	.card{
+		font-size: 10px;
+	}
+	.checkout{
+		font-size: 13px;
+		padding:inherit;
+	}
+	.lables{
+	text-align: justify;
+	line-height: 2.3;
+	}
+	.value{
+		line-height: 2.3;
+	}
+	.empData{
+		font-size: 13px;
+		margin: 1.5rem;
+		text-align: start;
+		
+	}
+	.employeeCard{
+	margin: 1rem;
+	width: 100%;
+	}
+	.salesData{
+	margin: 0;
+	font-size: 10px;
+}
+}

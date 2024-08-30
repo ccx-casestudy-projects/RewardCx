@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Gift</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Gifts</value>
+    </caseValues>
+    <layouts>
+        <layout>Gift Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Offer End Date should not be less than Offer Start Date --></errorMessage>
+        <name>Offer_end_date</name>
+    </validationRules>
+</CustomObjectTranslation>

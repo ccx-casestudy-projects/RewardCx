@@ -1,0 +1,94 @@
+<template>
+    <lightning-card class="datatable">
+        <div class=" slds-grid slds-wrap " style="margin-top: -1.5rem;">
+            <div class="slds-col slds-size_8-of-12 slds-p-around_x-small">
+                    <lightning-icon icon-name='action:back' alternative-text='back' size='x-small' title='Back' onclick={handleBack}></lightning-icon>
+            </div>
+            <div class="slds-col slds-size_4-of-12 slds-p-around_x-small  ">
+                <div class="slds-grid">
+                    <div class="slds-col slds-size_2-of-4">
+
+                    </div>
+                    <div class="slds-col slds-size_2-of-4">
+                        <template if:true={creation}>
+                        <lightning-button variant="brand" icon-name="utility:add" label="Create" onclick={handleCreate}
+                        disabled={createbuttondisabled} size="x-small" class=""></lightning-button>
+                        </template>
+                         <template if:true={deletion}>
+                    <lightning-button icon-name="utility:delete" label="Delete" disabled={isDeleteButtonEnabled}
+                        variant="destructive" onclick={handleCancel} class=" slds-float_right ">
+                    </lightning-button>
+                         </template>
+                    </div>
+                </div>
+            </div>
+        </div>
+            <div class="slds-p-around_medium slds-text-heading_medium slds-text-align_center ">
+                <span class="slds-p-around_medium"  style="font-weight: bolder;"> {header}</span>
+            </div>
+
+        <template if:true={isOpenFilterInput}>
+            <div style="height: 40px;" class="slds-grid slds-wrap">
+                <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+                    aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                    <div class="slds-modal__container">
+                        <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+                            title="Close" onclick={closeModal}>
+                            <lightning-icon icon-name="utility:close" alternative-text="close" variant="warning"
+                                size="small"></lightning-icon>
+                            <span class="slds-assistive-text">Close</span>
+                        </button>
+
+                        <div class="slds-modal__content slds-p-around_medium slds-grid slds-wrap"
+                            id="modal-content-id-1">
+                            <lightning-input label={inputLabel} onchange={handleChange} oncommit={handleCommit}>
+                            </lightning-input>
+                        </div>
+                    </div>
+                </section>
+                <div class="slds-backdrop slds-backdrop_open"></div>
+            </div>
+        </template>
+
+        <div if:true={dataLoading}
+            class="slds-grid slds-wrap slds-align_absolute-center slds-spinner_inline spinner-padding slds-grid slds-wrap"
+            style="padding-top :10rem; height:23rem; ">
+            <lightning-spinner variant="brand" alternative-text="Loading Data" size="medium">
+            </lightning-spinner>
+        </div>
+  <!--      <div if:true={isSearch} class="slds-wrap slds-grid">
+            <div class="slds-col slds-size_4-of-12 slds-p-horizontal--small "
+                style="padding-left :1rem;padding-bottom :1rem;width: 25rem; ">
+                <lightning-input type="search" label="Search" onchange={updateSearch}
+                    placeholder="Input the search term"></lightning-input>
+            </div>
+            <div class="slds-col slds-size_3-of-12 slds-p-horizontal--small">
+                <lightning-input type="Date" label="From" value={oldDate} name="oldDate"
+                    onchange={handleChangeAction}></lightning-input>
+            </div>
+            <div class="slds-col slds-3-of-12 slds-p-horizontal--small">
+                <lightning-input type="Date" label="To" value={oldDate2} name="oldDate2"
+                    onchange={handleChangeAction2}></lightning-input>
+            </div>
+            <div class="slds-col slds-2-of-12 slds-m-bottom--medium"
+                style="text-align:center; width:40px; margin:auto;">
+                <lightning-button type="brand" label="Search" variant="brand" size="small"
+                    onclick={searchAction}></lightning-button>
+            </div>
+        </div>-->
+        <div if:false={dataLoading}>
+            <div class="slds-grid slds-wrap slds-scrollable slds-grid slds-wrap" style="height:23rem;"
+                tabindex="0" if:false={dataLoading}>
+                <div class="myTable1">
+                    <lightning-datatable data={data} columns={columns} data-id="datatable" key-field="Id"
+                        onrowaction={handleRowAction} onrowselection={getSelectedName} selected-rows={selectedRowsMap}
+                        resize-column-disabled hide-checkbox-column={ischecked} sorted-by={sortBy}
+                        sorted-direction={sortDirection} onsort={handleSortAccountData} is-loading={dataLoading}
+                        onheaderaction={handleHeaderAction} class="myTable12">
+
+                    </lightning-datatable>
+                </div>
+            </div>
+        </div>
+    </lightning-card>
+</template>
